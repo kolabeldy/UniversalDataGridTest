@@ -16,19 +16,55 @@
     d:DesignHeight="400"
     d:DesignWidth="1200"
     mc:Ignorable="d">
-    
+
     <UserControl.Resources>
-        <Style x:Key="mdDataGridTextColumnStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+        <Style x:Key="mdDataGridTextColumnStyle" TargetType="{x:Type TextBlock}" 
+               BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
             <Setter Property="HorizontalAlignment" Value="Right" />
         </Style>
+
+        <Style x:Key="mdDataGridTextColumnHeaderStyleLeft" TargetType="{x:Type DataGridColumnHeader}"
+               BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="Background" Value="{StaticResource PrimaryHueLightBrush}" />
+            <!--<Setter Property="Foreground" Value="WhiteSmoke" />-->
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock TextWrapping="Wrap"
+                                   Text="{Binding}"
+                                   FontWeight="DemiBold"
+                                   TextAlignment="Right" />
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="mdDataGridTextColumnHeaderStyleRight" TargetType="{x:Type DataGridColumnHeader}"
+               BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+            <Setter Property="HorizontalContentAlignment" Value="Right" />
+            <Setter Property="Background" Value="{StaticResource PrimaryHueLightBrush}" />
+            <!--<Setter Property="Foreground" Value="WhiteSmoke" />-->
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock TextWrapping="Wrap"
+                                   Text="{Binding}"
+                                   FontWeight="DemiBold"
+                                   TextAlignment="Right" />
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </UserControl.Resources>
-    
+
     <Grid Margin="0,0,0,0" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition x:Name="rowTotal" Height="28" />
         </Grid.RowDefinitions>
         <DataGrid x:Name="myDataGrid" 
+                  Margin="20"
                   AutoGenerateColumns="True" 
                   IsReadOnly="False">
         </DataGrid>

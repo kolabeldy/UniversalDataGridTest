@@ -38,12 +38,17 @@ public partial class UniversalDataGridAuto : UserControl //, INotifyPropertyChan
         {
             e.Column.Header = rec.Headers;
             e.Column.Width = new DataGridLength(rec.ColWidth, DataGridLengthUnitType.Star);
+            if (e.PropertyType != typeof(double))
+            {
+                (e.Column).HeaderStyle = this.Resources["mdDataGridTextColumnHeaderStyleLeft"] as Style;
+            }
             if (e.PropertyType == typeof(double))
             {
                 (e.Column as DataGridTextColumn).Binding.StringFormat = rec.NumericFormat;
                 (e.Column as DataGridTextColumn).ElementStyle = this.Resources["mdDataGridTextColumnStyle"] as Style;
+                (e.Column).HeaderStyle = this.Resources["mdDataGridTextColumnHeaderStyleRight"] as Style;
             }
-
+            
         }
     }
 
