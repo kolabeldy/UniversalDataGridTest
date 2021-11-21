@@ -78,7 +78,7 @@ public class MainWindowViewModel : BaseViewModel
             new TStruct { Headers = "Окл., %", Binding = "DiffProc", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N1}", ColumnVisible = true, TotalRowTextVisible = true }
         };
 
-        ObservableCollection<TableData> tableData = new();
+        List<TableData> tableData = new();
 
         tableData.Add(new TableData
         {
@@ -135,8 +135,7 @@ public class MainWindowViewModel : BaseViewModel
             IsPrime = true
         });
 
-        UniversalDataGridAuto table = new UniversalDataGridAuto(tstruct);
-        table.GridData = tableData;
+        UniversalDataGridAuto table = new UniversalDataGridAuto(tableData, tstruct);
         ContentPanel = table;
 
     }

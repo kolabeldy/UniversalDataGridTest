@@ -21,23 +21,26 @@ using static UniversalDataGridTest.Models.Employee;
 namespace UniversalDataGridTest;
 public partial class UniversalDataGridAuto : UserControl, INotifyPropertyChanged
 {
-    private ObservableCollection<TableData> _GridData;
-    public ObservableCollection<TableData> GridData //{ get; set; }
-    {
-        get => _GridData;
-        set
-        {
-            _GridData = value;
-            OnPropertyChanged("GridData");
-        }
-    }
+    //private ObservableCollection<TableData> _GridData;
+    //public List<TableData> GridData { get; set; }
+    //{
+    //    get => _GridData;
+    //    set
+    //    {
+    //        _GridData = value;
+    //        OnPropertyChanged("GridData");
+    //    }
+    //}
 
     private List<TStruct> tableStruct;
-    public UniversalDataGridAuto(List<TStruct> tableStructure)
+    public UniversalDataGridAuto(List<TableData> gridData, List<TStruct> tableStructure)
     {
+        //GridData = gridData;
+        //GridData = new ObservableCollection<TableData>(gridData);
         tableStruct = tableStructure;
         DataContext = this;
         InitializeComponent();
+        myDataGrid.ItemsSource = gridData;
         myDataGrid.AutoGeneratingColumn += myDataGrid_AutoGeneratingColumn;
     }
 
