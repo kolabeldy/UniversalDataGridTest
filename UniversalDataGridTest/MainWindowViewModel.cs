@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -52,7 +53,8 @@ public class MainWindowViewModel : BaseViewModel
             new TStruct { Headers = "Факт, т.р.", Binding = "FactUseCost", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
             new TStruct { Headers = "План, т.р.", Binding = "PlanUseCost", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
             new TStruct { Headers = "Окл., т.р.", Binding = "DiffUseCost", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
-            new TStruct { Headers = "Окл., %", Binding = "DiffProc", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N1}", ColumnVisible = true, TotalRowTextVisible = true }
+            new TStruct { Headers = "Окл., %", Binding = "DiffProc", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N1}", ColumnVisible = true, TotalRowTextVisible = true },
+            new TStruct { Headers = "Первичный", Binding = "IsPrime", ColWidth = 0.7, TextAligment = TextAlignment.Right, NumericFormat = "{0:N1}", ColumnVisible = true, TotalRowTextVisible = true }
         };
 
 
@@ -66,6 +68,7 @@ public class MainWindowViewModel : BaseViewModel
             new TStruct { Headers = "Код", Binding = "IdER", ColWidth = 0.7, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = false },
             new TStruct { Headers = "Ресурс", Binding = "ERName", ColWidth = 1.5, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
             new TStruct { Headers = "Разм.", Binding = "UnitName", ColWidth = 0.7, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = false },
+            new TStruct { Headers = "Первичный", Binding = "IsPrime", ColWidth = 0.7, TextAligment = TextAlignment.Right, NumericFormat = "{0:N1}", ColumnVisible = true, TotalRowTextVisible = true },
             new TStruct { Headers = "Факт", Binding = "FactUse", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N2}", ColumnVisible = true, TotalRowTextVisible = false },
             new TStruct { Headers = "План", Binding = "PlanUse", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N2}", ColumnVisible = true, TotalRowTextVisible = false },
             new TStruct { Headers = "Окл.", Binding = "DiffUse", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N2}", ColumnVisible = true, TotalRowTextVisible = false },
@@ -75,8 +78,66 @@ public class MainWindowViewModel : BaseViewModel
             new TStruct { Headers = "Окл., %", Binding = "DiffProc", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N1}", ColumnVisible = true, TotalRowTextVisible = true }
         };
 
+        ObservableCollection<TableData> tableData = new();
 
-        ContentPanel = new UniversalDataGridAuto(tstruct);
+        tableData.Add(new TableData
+        {
+            Period = 202106,
+            PeriodStr = "2021 июн",
+            IdCC = 56,
+            CCName = "ЦЗ-056",
+            IdER = 990,
+            ERName = "пар 13ата",
+            UnitName = "Гкал",
+            FactUse = 100.674,
+            PlanUse = 90.0,
+            DiffUse = 10.674,
+            FactUseCost = 100.674,
+            PlanUseCost = 90.0,
+            DiffUseCost = 10.674,
+            DiffProc = 12.563,
+            IsPrime = false
+        });
+        tableData.Add(new TableData
+        {
+            Period = 202106,
+            PeriodStr = "2021 июн",
+            IdCC = 71,
+            CCName = "ЦЗ-071",
+            IdER = 991,
+            ERName = "горячая вода",
+            UnitName = "Гкал",
+            FactUse = 100.674,
+            PlanUse = 90.0,
+            DiffUse = 10.674,
+            FactUseCost = 100.674,
+            PlanUseCost = 90.0,
+            DiffUseCost = 10.674,
+            DiffProc = 12.563,
+            IsPrime = true
+        });
+        tableData.Add(new TableData
+        {
+            Period = 202106,
+            PeriodStr = "2021 июн",
+            IdCC = 71,
+            CCName = "ЦЗ-110",
+            IdER = 955,
+            ERName = "электроэнергия",
+            UnitName = "МВтч",
+            FactUse = 55100.674,
+            PlanUse = 54090.0,
+            DiffUse = 110.674,
+            FactUseCost = 55100.674,
+            PlanUseCost = 54090.0,
+            DiffUseCost = 110.674,
+            DiffProc = 12.563,
+            IsPrime = true
+        });
+
+        UniversalDataGridAuto table = new UniversalDataGridAuto(tstruct);
+        table.GridData = tableData;
+        ContentPanel = table;
 
     }
 

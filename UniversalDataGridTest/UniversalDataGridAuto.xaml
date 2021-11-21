@@ -18,34 +18,22 @@
     d:DesignHeight="400"
     d:DesignWidth="1200"
     mc:Ignorable="d">
-
+    
+    <UserControl.Resources>
+        <Style x:Key="mdDataGridTextColumnStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+        </Style>
+    </UserControl.Resources>
+    
     <Grid Margin="0,0,0,0" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition x:Name="rowTotal" Height="28" />
         </Grid.RowDefinitions>
-        <local:MyDataGrid x:Name="MainGrid"
-                          Grid.Row="0"
-                          Margin="20"
-                          ItemsSource="{Binding GridData}"
-                          FrozenColumnCount="4"
-                          HorizontalAlignment="Stretch"
-                          VerticalAlignment="Stretch"
-                          AutoGenerateColumns="True"
-                          Background="{DynamicResource MaterialDesignPaper}"
-                          BorderBrush="LightGray"
-                          BorderThickness="1,1,1,1"
-                          CanUserAddRows="False"
-                          CanUserDeleteRows="False"
-                          CanUserResizeColumns="False"
-                          CanUserResizeRows="False"
-                          HeadersVisibility="Column"
-                          HorizontalScrollBarVisibility="Auto"
-                          IsReadOnly="True"
-                          ScrollViewer.CanContentScroll="True"
-                          CellTemplateSelector="{StaticResource templateSelector}"
-                          VerticalScrollBarVisibility="Visible">
-        </local:MyDataGrid>
-
+        <DataGrid x:Name="myDataGrid" 
+                  AutoGenerateColumns="True" 
+                  ItemsSource="{Binding GridData}"
+                  IsReadOnly="False">
+        </DataGrid>
     </Grid>
 </UserControl>

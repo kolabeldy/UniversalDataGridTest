@@ -24,7 +24,6 @@ public class MyDataGrid : DataGrid
     protected override void OnAutoGeneratingColumn(DataGridAutoGeneratingColumnEventArgs e)
     {
         e.Cancel = true;
-        if(e.Column.CoerceValue) != null)
         Columns.Add(new DataGridTemplateColumn
         {
             Header = e.Column.Header,
