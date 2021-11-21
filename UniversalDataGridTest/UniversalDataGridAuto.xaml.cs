@@ -18,9 +18,9 @@ using System.Windows.Shapes;
 using UniversalDataGridTest.Models;
 
 namespace UniversalDataGridTest;
-public partial class UniversalDataGrid : UserControl, INotifyPropertyChanged
+public partial class UniversalDataGridAuto : UserControl, INotifyPropertyChanged
 {
-    public ObservableCollection<TableData> GridData { get; set; } = new();
+    public ObservableCollection<TableDataRu> GridData { get; set; } = new();
     public ObservableCollection<TableData> TotalData { get; set; } = new();
 
 
@@ -36,7 +36,7 @@ public partial class UniversalDataGrid : UserControl, INotifyPropertyChanged
     private SolidColorBrush normalBrush = new SolidColorBrush(Colors.White);
 
 
-    public UniversalDataGrid(List<TStruct> tableStructure, bool isHighlight = false)
+    public UniversalDataGridAuto(List<TStruct> tableStructure, bool isHighlight = false)
     {
         TableStructure = tableStructure;
         IsHighlight = isHighlight;
@@ -46,13 +46,13 @@ public partial class UniversalDataGrid : UserControl, INotifyPropertyChanged
         InitializeComponent();
     }
 
-    private ObservableCollection<TableData> Get()
+    private ObservableCollection<TableDataRu> Get()
     {
-        ObservableCollection<TableData> result = new();
+        ObservableCollection<TableDataRu> result = new();
 
-        result.Add(new TableData { Period = 202106, PeriodStr = "2021 июн", IdCC = 56, CCName = "ЦЗ-056", IdER = 990, ERName = "пар 13ата", UnitName = "Гкал", FactUse = 100.674, PlanUse = 90.0, DiffUse = 10.674, FactUseCost = 100.674, PlanUseCost = 90.0, DiffUseCost = 10.674, DiffProc = 12.563 });
-        result.Add(new TableData { Period = 202106, PeriodStr = "2021 июн", IdCC = 71, CCName = "ЦЗ-071", IdER = 991, ERName = "горячая вода", UnitName = "Гкал", FactUse = 100.674, PlanUse = 90.0, DiffUse = 10.674, FactUseCost = 100.674, PlanUseCost = 90.0, DiffUseCost = 10.674, DiffProc = 12.563 });
-        result.Add(new TableData { Period = 202106, PeriodStr = "2021 июн", IdCC = 71, CCName = "ЦЗ-110", IdER = 955, ERName = "электроэнергия", UnitName = "МВтч", FactUse = 55100.674, PlanUse = 54090.0, DiffUse = 110.674, FactUseCost = 55100.674, PlanUseCost = 54090.0, DiffUseCost = 110.674, DiffProc = 12.563 });
+        result.Add(new TableDataRu { КодРесурса = 990, Энергоресурс = "пар 13ата", Разм = "Гкал", Факт = 100.674, План = 90.0, Откл = 10.674, Факт_тр = 100.674, План_тр = 90.0, Откл_тр = 10.674, Откл_проц = 12.563 });
+        result.Add(new TableDataRu { КодРесурса = 951, Энергоресурс = "вода речная", Разм = "тыс.м3", Факт = 100.674, План = 90.0, Откл = 10.674, Факт_тр = 100.674, План_тр = 90.0, Откл_тр = 10.674, Откл_проц = 12.563 });
+        result.Add(new TableDataRu { КодРесурса = 955, Энергоресурс = "электроэнергия", Разм = "МВтч", Факт = 100.674, План = 90.0, Откл = 10.674, Факт_тр = 100.674, План_тр = 90.0, Откл_тр = 10.674, Откл_проц = 12.563 });
 
         return result;
     }

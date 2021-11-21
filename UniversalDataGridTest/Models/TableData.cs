@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace UniversalDataGridTest;
+namespace UniversalDataGridTest.Models;
 public class TableData
 {
     public int Period { get; set; }
