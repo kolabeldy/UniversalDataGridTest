@@ -140,5 +140,45 @@ public class MainWindowViewModel : BaseViewModel
         ContentPanel = table;
 
     }
+    public void UniversalDataGridAuto2Show()
+    {
+        List<TStruct> tstruct = new()
+        {
+            new TStruct { Headers = "Ном", Binding = "Id", ColWidth = 0.7, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = false },
+            new TStruct { Headers = "Наименование", Binding = "Name", ColWidth = 1.5, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
+            new TStruct { Headers = "Количество", Binding = "Count", ColWidth = 0.7, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = false },
+            new TStruct { Headers = "Величина", Binding = "Volume", ColWidth = 0.7, TextAligment = TextAlignment.Right, NumericFormat = "{0:N2}", ColumnVisible = true, TotalRowTextVisible = true },
+        };
+
+        List<TableData1> tableData = new();
+
+        tableData.Add(new TableData1
+        {
+            Id = 1111,
+            Name = "Первый",
+            Count = 56,
+            Volume = 100.674
+        });
+        tableData.Add(new TableData1
+        {
+            Id = 2222,
+            Name = "Второй",
+            Count = 56,
+            Volume = 853100.635
+        });
+        tableData.Add(new TableData1
+        {
+            Id = 3333,
+            Name = "Третий",
+            Count = 56,
+            Volume = 8925100.14678
+        });
+
+        UniversalDataGridAuto table = new UniversalDataGridAuto(tstruct);
+        table.Show<TableData1>(tableData);
+        ContentPanel = table;
+
+    }
+
 
 }

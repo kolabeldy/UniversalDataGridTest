@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using UniversalDataGridTest.Models;
@@ -11,11 +12,11 @@ public partial class UniversalDataGridAuto : UserControl
     {
         tableStruct = tableStructure;
         InitializeComponent();
+        myDataGrid.AutoGeneratingColumn += myDataGrid_AutoGeneratingColumn;
     }
     public void Show<T>(List<T> tableData)
     {
         myDataGrid.ItemsSource = tableData;
-        myDataGrid.AutoGeneratingColumn += myDataGrid_AutoGeneratingColumn;
     }
     void myDataGrid_AutoGeneratingColumn(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)
     {
