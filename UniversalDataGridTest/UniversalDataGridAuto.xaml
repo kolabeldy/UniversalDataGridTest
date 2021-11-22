@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     TextElement.FontWeight="Regular"
     TextElement.FontSize="13"
@@ -27,7 +28,6 @@
                BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
             <Setter Property="HorizontalContentAlignment" Value="Left" />
             <Setter Property="Background" Value="{StaticResource PrimaryHueLightBrush}" />
-            <!--<Setter Property="Foreground" Value="WhiteSmoke" />-->
             <Setter Property="ContentTemplate">
                 <Setter.Value>
                     <DataTemplate>
@@ -39,11 +39,11 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
         <Style x:Key="mdDataGridTextColumnHeaderStyleRight" TargetType="{x:Type DataGridColumnHeader}"
                BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
             <Setter Property="HorizontalContentAlignment" Value="Right" />
             <Setter Property="Background" Value="{StaticResource PrimaryHueLightBrush}" />
-            <!--<Setter Property="Foreground" Value="WhiteSmoke" />-->
             <Setter Property="ContentTemplate">
                 <Setter.Value>
                     <DataTemplate>

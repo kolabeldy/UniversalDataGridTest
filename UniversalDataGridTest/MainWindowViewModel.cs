@@ -135,7 +135,8 @@ public class MainWindowViewModel : BaseViewModel
             IsPrime = true
         });
 
-        UniversalDataGridAuto table = new UniversalDataGridAuto(tableData, tstruct);
+        UniversalDataGridAuto table = new UniversalDataGridAuto(tstruct);
+        table.Show<TableData>(tableData);
         ContentPanel = table;
 
     }

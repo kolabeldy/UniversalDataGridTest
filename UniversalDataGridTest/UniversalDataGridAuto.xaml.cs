@@ -4,31 +4,19 @@ using System.Windows.Controls;
 using UniversalDataGridTest.Models;
 
 namespace UniversalDataGridTest;
-public partial class UniversalDataGridAuto : UserControl //, INotifyPropertyChanged
+public partial class UniversalDataGridAuto : UserControl
 {
-    //private ObservableCollection<TableData> _GridData;
-    //public List<TableData> GridData { get; set; }
-    //{
-    //    get => _GridData;
-    //    set
-    //    {
-    //        _GridData = value;
-    //        OnPropertyChanged("GridData");
-    //    }
-    //}
-
     private List<TStruct> tableStruct;
-    public UniversalDataGridAuto(List<TableData> gridData, List<TStruct> tableStructure)
+    public UniversalDataGridAuto(List<TStruct> tableStructure)
     {
-        //GridData = gridData;
-        //GridData = new ObservableCollection<TableData>(gridData);
         tableStruct = tableStructure;
-        DataContext = this;
         InitializeComponent();
-        myDataGrid.ItemsSource = gridData;
+    }
+    public void Show<T>(List<T> tableData)
+    {
+        myDataGrid.ItemsSource = tableData;
         myDataGrid.AutoGeneratingColumn += myDataGrid_AutoGeneratingColumn;
     }
-
     void myDataGrid_AutoGeneratingColumn(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)
     {
         TStruct rec = tableStruct.Find(m => m.Binding == e.PropertyName);
@@ -48,14 +36,7 @@ public partial class UniversalDataGridAuto : UserControl //, INotifyPropertyChan
                 (e.Column as DataGridTextColumn).ElementStyle = this.Resources["mdDataGridTextColumnStyle"] as Style;
                 (e.Column).HeaderStyle = this.Resources["mdDataGridTextColumnHeaderStyleRight"] as Style;
             }
-            
+
         }
     }
-
-    //public event PropertyChangedEventHandler PropertyChanged;
-    //public void OnPropertyChanged([CallerMemberName] string prop = "")
-    //{
-    //    if (PropertyChanged != null)
-    //        PropertyChanged(this, new PropertyChangedEventArgs(prop));
-    //}
 }
