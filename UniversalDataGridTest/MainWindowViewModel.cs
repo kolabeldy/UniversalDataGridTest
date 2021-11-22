@@ -40,42 +40,42 @@ public class MainWindowViewModel : BaseViewModel
         }
 
     }
-    public void UniversalDataGridShow1()
-    {
-        List<TStruct> tstruct = new()
-        {
-            new TStruct { Headers = "Код", Binding = "IdER", ColWidth = 0.7, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = false },
-            new TStruct { Headers = "Ресурс", Binding = "ERName", ColWidth = 1.5, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
-            new TStruct { Headers = "Разм.", Binding = "UnitName", ColWidth = 0.7, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = false },
-            new TStruct { Headers = "Факт", Binding = "FactUse", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N2}", ColumnVisible = true, TotalRowTextVisible = false },
-            new TStruct { Headers = "План", Binding = "PlanUse", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N2}", ColumnVisible = true, TotalRowTextVisible = false },
-            new TStruct { Headers = "Окл.", Binding = "DiffUse", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N2}", ColumnVisible = true, TotalRowTextVisible = false },
-            new TStruct { Headers = "Факт, т.р.", Binding = "FactUseCost", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
-            new TStruct { Headers = "План, т.р.", Binding = "PlanUseCost", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
-            new TStruct { Headers = "Окл., т.р.", Binding = "DiffUseCost", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
-            new TStruct { Headers = "Окл., %", Binding = "DiffProc", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N1}", ColumnVisible = true, TotalRowTextVisible = true },
-            new TStruct { Headers = "Первичный", Binding = "IsPrime", ColWidth = 0.7, TextAligment = TextAlignment.Right, NumericFormat = "{0:N1}", ColumnVisible = true, TotalRowTextVisible = true }
-        };
+    //public void UniversalDataGridShow1()
+    //{
+    //    List<TStruct> tstruct = new()
+    //    {
+    //        new TStruct { Headers = "Код", Binding = "IdER", ColWidth = 0.7, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = false },
+    //        new TStruct { Headers = "Ресурс", Binding = "ERName", ColWidth = 1.5, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
+    //        new TStruct { Headers = "Разм.", Binding = "UnitName", ColWidth = 0.7, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = false },
+    //        new TStruct { Headers = "Факт", Binding = "FactUse", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N2}", ColumnVisible = true, TotalRowTextVisible = false },
+    //        new TStruct { Headers = "План", Binding = "PlanUse", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N2}", ColumnVisible = true, TotalRowTextVisible = false },
+    //        new TStruct { Headers = "Окл.", Binding = "DiffUse", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N2}", ColumnVisible = true, TotalRowTextVisible = false },
+    //        new TStruct { Headers = "Факт, т.р.", Binding = "FactUseCost", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
+    //        new TStruct { Headers = "План, т.р.", Binding = "PlanUseCost", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
+    //        new TStruct { Headers = "Окл., т.р.", Binding = "DiffUseCost", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
+    //        new TStruct { Headers = "Окл., %", Binding = "DiffProc", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N1}", ColumnVisible = true, TotalRowTextVisible = true },
+    //        new TStruct { Headers = "Первичный", Binding = "IsPrime", ColWidth = 0.7, TextAligment = TextAlignment.Right, NumericFormat = "{0:N1}", ColumnVisible = true, TotalRowTextVisible = true }
+    //    };
 
 
-        ContentPanel = new UniversalDataGrid(tstruct);
+    //    ContentPanel = new UniversalDataGrid(tstruct);
 
-    }
+    //}
     public void UniversalDataGridAutoShow()
     {
-        List<TStruct> tstruct = new()
+        List<DataGridStruct> tstruct = new()
         {
-            new TStruct { Headers = "Код", Binding = "IdER", ColWidth = 0.7, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = false },
-            new TStruct { Headers = "Ресурс", Binding = "ERName", ColWidth = 1.5, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
-            new TStruct { Headers = "Разм.", Binding = "UnitName", ColWidth = 0.7, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = false },
-            new TStruct { Headers = "Перв", Binding = "IsPrime", ColWidth = 0.7, TextAligment = TextAlignment.Right, NumericFormat = "{0:N1}", ColumnVisible = true, TotalRowTextVisible = true },
-            new TStruct { Headers = "Факт", Binding = "FactUse", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N2}", ColumnVisible = true, TotalRowTextVisible = false },
-            new TStruct { Headers = "План", Binding = "PlanUse", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N2}", ColumnVisible = true, TotalRowTextVisible = false },
-            new TStruct { Headers = "Окл.", Binding = "DiffUse", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N2}", ColumnVisible = true, TotalRowTextVisible = false },
-            new TStruct { Headers = "Факт, тыс. руб.", Binding = "FactUseCost", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
-            new TStruct { Headers = "План, тыс. руб.", Binding = "PlanUseCost", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
-            new TStruct { Headers = "Окл., тыс. руб.", Binding = "DiffUseCost", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
-            new TStruct { Headers = "Окл., %", Binding = "DiffProc", ColWidth = 1, TextAligment = TextAlignment.Right, NumericFormat = "{0:N1}", ColumnVisible = true, TotalRowTextVisible = true }
+            new DataGridStruct { Headers = "Код", Binding = "IdER", ColWidth = 0.7 },
+            new DataGridStruct { Headers = "Ресурс", Binding = "ERName", ColWidth = 1.5 },
+            new DataGridStruct { Headers = "Разм.", Binding = "UnitName", ColWidth = 0.7 },
+            new DataGridStruct { Headers = "Перв", Binding = "IsPrime", ColWidth = 0.7 },
+            new DataGridStruct { Headers = "Факт", Binding = "FactUse", ColWidth = 1, NumericFormat = "{0:N2}" },
+            new DataGridStruct { Headers = "План", Binding = "PlanUse", ColWidth = 1, NumericFormat = "{0:N2}" },
+            new DataGridStruct { Headers = "Окл.", Binding = "DiffUse", ColWidth = 1, NumericFormat = "{0:N2}" },
+            new DataGridStruct { Headers = "Факт, тыс. руб.", Binding = "FactUseCost", ColWidth = 1, NumericFormat = "{0:N0}" },
+            new DataGridStruct { Headers = "План, тыс. руб.", Binding = "PlanUseCost", ColWidth = 1, NumericFormat = "{0:N0}" },
+            new DataGridStruct { Headers = "Окл., тыс. руб.", Binding = "DiffUseCost", ColWidth = 1, NumericFormat = "{0:N0}" },
+            new DataGridStruct { Headers = "Окл., %", Binding = "DiffProc", ColWidth = 1, NumericFormat = "{0:N1}" }
         };
 
         List<TableData> tableData = new();
@@ -142,12 +142,12 @@ public class MainWindowViewModel : BaseViewModel
     }
     public void UniversalDataGridAuto2Show()
     {
-        List<TStruct> tstruct = new()
+        List<DataGridStruct> tstruct = new()
         {
-            new TStruct { Headers = "Ном", Binding = "Id", ColWidth = 0.7, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = false },
-            new TStruct { Headers = "Наименование", Binding = "Name", ColWidth = 1.5, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = true },
-            new TStruct { Headers = "Количество", Binding = "Count", ColWidth = 0.7, TextAligment = TextAlignment.Left, NumericFormat = "{0:N0}", ColumnVisible = true, TotalRowTextVisible = false },
-            new TStruct { Headers = "Величина", Binding = "Volume", ColWidth = 0.7, TextAligment = TextAlignment.Right, NumericFormat = "{0:N2}", ColumnVisible = true, TotalRowTextVisible = true },
+            new DataGridStruct { Headers = "Ном", Binding = "Id", ColWidth = 0.7 },
+            new DataGridStruct { Headers = "Наименование", Binding = "Name", ColWidth = 1.5 },
+            new DataGridStruct { Headers = "Количество", Binding = "Count", ColWidth = 0.7 },
+            new DataGridStruct { Headers = "Величина", Binding = "Volume", ColWidth = 0.7, NumericFormat = "{0:N2}" },
         };
 
         List<TableData1> tableData = new();

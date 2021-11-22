@@ -24,7 +24,7 @@ public partial class UniversalDataGrid : UserControl, INotifyPropertyChanged
     public ObservableCollection<TableData> TotalData { get; set; } = new();
 
 
-    public List<TStruct> TableStructure { get; set; } = new();
+    public List<DataGridStruct> TableStructure { get; set; } = new();
     public SolidColorBrush TotalRowBrush { get; set; }
     public bool IsHighlight { get; set; }
     private string EmptyStr { get; set; }
@@ -36,7 +36,7 @@ public partial class UniversalDataGrid : UserControl, INotifyPropertyChanged
     private SolidColorBrush normalBrush = new SolidColorBrush(Colors.White);
 
 
-    public UniversalDataGrid(List<TStruct> tableStructure, bool isHighlight = false)
+    public UniversalDataGrid(List<DataGridStruct> tableStructure, bool isHighlight = false)
     {
         TableStructure = tableStructure;
         IsHighlight = isHighlight;

@@ -1,14 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using UniversalDataGridTest.Models;
 
 namespace UniversalDataGridTest;
 public partial class UniversalDataGridAuto : UserControl
 {
-    private List<TStruct> tableStruct;
-    public UniversalDataGridAuto(List<TStruct> tableStructure)
+    private List<DataGridStruct> tableStruct;
+    public UniversalDataGridAuto(List<DataGridStruct> tableStructure)
     {
         tableStruct = tableStructure;
         InitializeComponent();
@@ -18,9 +16,9 @@ public partial class UniversalDataGridAuto : UserControl
     {
         myDataGrid.ItemsSource = tableData;
     }
-    void myDataGrid_AutoGeneratingColumn(object sender, System.Windows.Controls.DataGridAutoGeneratingColumnEventArgs e)
+    void myDataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
     {
-        TStruct rec = tableStruct.Find(m => m.Binding == e.PropertyName);
+        DataGridStruct rec = tableStruct.Find(m => m.Binding == e.PropertyName);
         if (rec == null)
             e.Cancel = true;
         else
