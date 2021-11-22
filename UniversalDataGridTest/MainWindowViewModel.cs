@@ -52,9 +52,9 @@ public class MainWindowViewModel : BaseViewModel
             new DataGridStruct { Headers = "Факт", Binding = "FactUse", ColWidth = 1, NumericFormat = "{0:N2}" },
             new DataGridStruct { Headers = "План", Binding = "PlanUse", ColWidth = 1, NumericFormat = "{0:N2}" },
             new DataGridStruct { Headers = "Окл.", Binding = "DiffUse", ColWidth = 1, NumericFormat = "{0:N2}" },
-            new DataGridStruct { Headers = "Факт, тыс. руб.", Binding = "FactUseCost", ColWidth = 1, NumericFormat = "{0:N0}" },
-            new DataGridStruct { Headers = "План, тыс. руб.", Binding = "PlanUseCost", ColWidth = 1, NumericFormat = "{0:N0}" },
-            new DataGridStruct { Headers = "Окл., тыс. руб.", Binding = "DiffUseCost", ColWidth = 1, NumericFormat = "{0:N0}" },
+            new DataGridStruct { Headers = "Факт, тыс.руб.", Binding = "FactUseCost", ColWidth = 1, NumericFormat = "{0:N0}" },
+            new DataGridStruct { Headers = "План, тыс.руб.", Binding = "PlanUseCost", ColWidth = 1, NumericFormat = "{0:N0}" },
+            new DataGridStruct { Headers = "Окл., тыс.руб.", Binding = "DiffUseCost", ColWidth = 1, NumericFormat = "{0:N0}" },
             new DataGridStruct { Headers = "Окл., %", Binding = "DiffProc", ColWidth = 1, NumericFormat = "{0:N1}" }
         };
 
