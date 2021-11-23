@@ -48,7 +48,7 @@ public class MainWindowViewModel : BaseViewModel
             new DataGridStruct { Headers = "Код", Binding = "IdER", ColWidth = 0.7 },
             new DataGridStruct { Headers = "Ресурс", Binding = "ERName", ColWidth = 1.5 },
             new DataGridStruct { Headers = "Разм.", Binding = "UnitName", ColWidth = 0.7 },
-            new DataGridStruct { Headers = "Перв", Binding = "IsPrime", ColWidth = 0.7 },
+            new DataGridStruct { Headers = "Первичные", Binding = "IsPrime", ColWidth = 1.1, IsGrouping = true },
             new DataGridStruct { Headers = "Факт", Binding = "FactUse", ColWidth = 1, NumericFormat = "{0:N2}" },
             new DataGridStruct { Headers = "План", Binding = "PlanUse", ColWidth = 1, NumericFormat = "{0:N2}" },
             new DataGridStruct { Headers = "Окл.", Binding = "DiffUse", ColWidth = 1, NumericFormat = "{0:N2}" },

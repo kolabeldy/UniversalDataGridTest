@@ -26,8 +26,8 @@
                      FontWeight="DemiBold"
                      Content="{Binding SideMenu}" />
         <UserControl x:Name="contentPanel" 
-                     Grid.Column="1" 
-                     Margin="20"
-                     Content="{Binding ContentPanel}" />
+                        Grid.Column="1"
+                        Margin="20"
+                        Content="{Binding ContentPanel}" />
     </Grid>
 </Window>
