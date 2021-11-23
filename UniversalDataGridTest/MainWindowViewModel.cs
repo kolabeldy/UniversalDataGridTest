@@ -114,6 +114,24 @@ public class MainWindowViewModel : BaseViewModel
             DiffProc = 12.563,
             IsPrime = true
         });
+        tableData.Add(new TableData
+        {
+            Period = 202106,
+            PeriodStr = "2021 июн",
+            IdCC = 71,
+            CCName = "ЦЗ-110",
+            IdER = 937,
+            ERName = "холод -20",
+            UnitName = "МВтч",
+            FactUse = 33100.674,
+            PlanUse = 33090.0,
+            DiffUse = 110.674,
+            FactUseCost = 33100.674,
+            PlanUseCost = 33090.0,
+            DiffUseCost = 110.674,
+            DiffProc = 1.563,
+            IsPrime = false
+        });
 
         UniversalDataGrid table = new UniversalDataGrid(tstruct);
         table.Show<TableData>(tableData);
