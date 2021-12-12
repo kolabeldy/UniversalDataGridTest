@@ -1,0 +1,165 @@
+﻿<UserControl x:Class="UniversalDataGridTest.TwoRowDataGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             xmlns:conv="clr-namespace:MyServicesLibrary.Converters;assembly=MyServicesLibrary"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="1000" >
+    
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.Row="0"
+                    x:Name="dataGridCC"
+                    Margin="5,10"
+                    CanUserAddRows="False" 
+                    FrozenColumnCount="4"
+                    AutoGenerateColumns="False"
+                    HeadersVisibility="All"
+                    VerticalScrollBarVisibility="Auto"
+                    IsReadOnly="True"
+                    md:DataGridAssist.CellPadding="10 5"
+                    md:DataGridAssist.ColumnHeaderPadding="10 10"
+                    HorizontalAlignment="Stretch"
+                  ItemsSource="{Binding tableData}">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Binding="{Binding PeriodStr}"
+                    Header="Период"
+                    Width="1*">
+                </DataGridTextColumn>
+
+                <DataGridTextColumn
+                    Binding="{Binding IdCC}"
+                    Header="ЦЗ"
+                    Width="0.7*">
+                </DataGridTextColumn>
+
+                <DataGridTemplateColumn
+                    Header="Энергоресурс"
+                    Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,2">
+                                    <TextBlock Text="код: " 
+                                               FontSize="9"
+                                               HorizontalAlignment="Left"/>
+                                    <TextBlock Text="{Binding IdER}" 
+                                               FontSize="9"
+                                               HorizontalAlignment="Left"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding ERName}" 
+                                           HorizontalAlignment="Left"
+                                           Margin="0,2"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+                <DataGridTemplateColumn
+                    Header="Разм."
+                    Width="1*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding UnitName}" 
+                                           Margin="0,2"/>
+                                <TextBlock Text="тыс. руб." 
+                                           FontWeight="DemiBold"
+                                           Margin="0,2"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+                <DataGridTemplateColumn
+                    Header="Факт"
+                    Width="1*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding FactUse, StringFormat={}{0:N1}}" 
+                                           HorizontalAlignment="Right"
+                                           Margin="0,2"/>
+                                <TextBlock Text="{Binding FactUseCost, StringFormat={}{0:N1}}" 
+                                           HorizontalAlignment="Right"
+                                           FontWeight="DemiBold"
+                                           Margin="0,2"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn
+                    Header="План"
+                    Width="1*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding PlanUse, StringFormat={}{0:N1}}" 
+                                           
+                                           HorizontalAlignment="Right"
+                                           Margin="0,2"/>
+                                <TextBlock Text="{Binding PlanUseCost, StringFormat={}{0:N1}}" 
+                                           HorizontalAlignment="Right"
+                                           FontWeight="DemiBold"
+                                           Margin="0,2"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+                <DataGridTemplateColumn
+                    Header="Откл."
+                    Width="1*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding DiffUse, StringFormat={}{0:N1}}" 
+                                           
+                                           HorizontalAlignment="Right"
+                                           Margin="0,2"/>
+                                <TextBlock Text="{Binding DiffUseCost, StringFormat={}{0:N1}}" 
+                                           HorizontalAlignment="Right"
+                                           FontWeight="DemiBold"
+                                           Margin="0,2"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+                <DataGridTextColumn
+                    Binding="{Binding DiffProc, StringFormat=N1}"
+                    Header="Откл., %"
+                    Width="1*"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Right" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+    </Grid>
+</UserControl>

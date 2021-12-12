@@ -45,8 +45,9 @@ public class MainWindowViewModel : BaseViewModel
     {
         List<DataGridStruct> tstruct = new()
         {
+            new DataGridStruct { Headers = "ЦЗ", Binding = "IdCC", ColWidth = 0.7, IsGrouping = true },
             new DataGridStruct { Headers = "Код", Binding = "IdER", ColWidth = 0.7 },
-            new DataGridStruct { Headers = "Энергоресурс", Binding = "ERName", ColWidth = 1.5, IsGrouping = true },
+            new DataGridStruct { Headers = "Энергоресурс", Binding = "ERName", ColWidth = 1.5 },
             new DataGridStruct { Headers = "Разм.", Binding = "UnitName", ColWidth = 0.7 },
             new DataGridStruct { Headers = "Первичные", Binding = "IsPrime", ColWidth = 1.1 },
             new DataGridStruct { Headers = "Факт", Binding = "FactUse", ColWidth = 1, NumericFormat = "{0:N2}" },
@@ -59,79 +60,45 @@ public class MainWindowViewModel : BaseViewModel
         };
 
         List<TableData> tableData = new();
+        var arrPeriod = new[] { "2021 янв" };
+        var arrCC = new[] { 16, 23, 56, 70, 71, 110, 501 };
+        var arrER = new[] { 951, 937, 955, 966, 990 };
+        var arrERName = new[] { "вода речная", "холод -20", "электроэнергия", "газ природный", "пар 13 ата" };
+        var arrRazm = new[] { "тыс. м3", "Гкал", "МВтч", "Гкал", "Гкал" };
+        var arrTariff = new[] { 0.16, 0.670, 3.5, 0.300, 0.870 };
+        var arrPrime = new[] { true, false, true, true, true };
 
-        tableData.Add(new TableData
-        {
-            Period = 202106,
-            PeriodStr = "2021 июн",
-            IdCC = 56,
-            CCName = "ЦЗ-056",
-            IdER = 955,
-            ERName = "электроэнергия",
-            UnitName = "МВтч",
-            FactUse = 100.674,
-            PlanUse = 90.0,
-            DiffUse = 10.674,
-            FactUseCost = 100.674,
-            PlanUseCost = 90.0,
-            DiffUseCost = 10.674,
-            DiffProc = 12.563,
-            IsPrime = false
-        });
-        tableData.Add(new TableData
-        {
-            Period = 202106,
-            PeriodStr = "2021 июн",
-            IdCC = 71,
-            CCName = "ЦЗ-071",
-            IdER = 937,
-            ERName = "холод -20",
-            UnitName = "Гкал",
-            FactUse = 100.674,
-            PlanUse = 90.0,
-            DiffUse = 10.674,
-            FactUseCost = 100.674,
-            PlanUseCost = 90.0,
-            DiffUseCost = 10.674,
-            DiffProc = 12.563,
-            IsPrime = true
-        });
-        tableData.Add(new TableData
-        {
-            Period = 202106,
-            PeriodStr = "2021 июн",
-            IdCC = 71,
-            CCName = "ЦЗ-110",
-            IdER = 955,
-            ERName = "электроэнергия",
-            UnitName = "МВтч",
-            FactUse = 55100.674,
-            PlanUse = 54090.0,
-            DiffUse = 110.674,
-            FactUseCost = 55100.674,
-            PlanUseCost = 54090.0,
-            DiffUseCost = 110.674,
-            DiffProc = 12.563,
-            IsPrime = true
-        });
-        tableData.Add(new TableData
-        {
-            Period = 202106,
-            PeriodStr = "2021 июн",
-            IdCC = 71,
-            CCName = "ЦЗ-110",
-            IdER = 937,
-            ERName = "холод -20",
-            UnitName = "МВтч",
-            FactUse = 33100.674,
-            PlanUse = 33090.0,
-            DiffUse = 110.674,
-            FactUseCost = 33100.674,
-            PlanUseCost = 33090.0,
-            DiffUseCost = 110.674,
-            DiffProc = 1.563,
-            IsPrime = false
-        });
+        Random randomER = new Random();
+        Random randomValue = new Random();
+        Random randomDiff = new Random();
+
+        tableData = new();
+
+        for (int period = 0; period < arrPeriod.Length; period++)
+            for (int cc = 0; cc < arrCC.Length; cc++)
+                for (int er = 0; er < arrER.Length; er++)
+                {
+                    double fact = (double)randomValue.Next(2000) / 10f;
+                    double diff1 = fact * randomDiff.NextDouble() / 10;
+                    double diff = (int)diff1 % 2 == 0 ? diff1 : -diff1;
+                    double plan = fact + diff;
+                    tableData.Add(new TableData
+                    {
+                        PeriodStr = arrPeriod[period],
+                        IdCC = arrCC[cc],
+                        IdER = arrER[er],
+                        ERName = arrERName[er],
+                        UnitName = arrRazm[er],
+                        FactUse = fact,
+                        PlanUse = plan,
+                        DiffUse = diff,
+                        FactUseCost = fact * arrTariff[er],
+                        PlanUseCost = plan * arrTariff[er],
+                        DiffUseCost = diff * arrTariff[er],
+                        DiffProc = diff * 100 / plan,
+                        IsPrime = arrPrime[er]
+                    });
+                }
 
         UniversalDataGrid table = new UniversalDataGrid(tstruct);
         table.Show<TableData>(tableData);
@@ -174,6 +141,12 @@ public class MainWindowViewModel : BaseViewModel
 
         UniversalDataGrid table = new UniversalDataGrid(tstruct);
         table.Show<TableData1>(tableData);
+        ContentPanel = table;
+
+    }
+    public void TwoRowDataGridShow()
+    {
+        UserControl table = new TwoRowDataGrid();
         ContentPanel = table;
 
     }
