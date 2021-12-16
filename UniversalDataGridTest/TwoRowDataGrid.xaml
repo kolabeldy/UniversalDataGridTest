@@ -15,42 +15,81 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="1000" >
     
+    <UserControl.Resources>
+        <Style x:Key="mdDataGridTextColumnStyle" TargetType="{x:Type TextBlock}" 
+               BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+        </Style>
+
+        <Style x:Key="mdDataGridTextColumnHeaderStyleLeft" TargetType="{x:Type DataGridColumnHeader}"
+               BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="Background" Value="{StaticResource PrimaryHueLightBrush}" />
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock TextWrapping="Wrap"
+                                   Text="{Binding}"
+                                   FontWeight="DemiBold"
+                                   TextAlignment="Right" />
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="mdDataGridTextColumnHeaderStyleRight" TargetType="{x:Type DataGridColumnHeader}"
+               BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+            <Setter Property="HorizontalContentAlignment" Value="Right" />
+            <Setter Property="Background" Value="{StaticResource PrimaryHueLightBrush}" />
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock TextWrapping="Wrap"
+                                   Text="{Binding}"
+                                   FontWeight="DemiBold"
+                                   TextAlignment="Right" />
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition Height="60" />
+            <RowDefinition Height="0" />
         </Grid.RowDefinitions>
 
         <DataGrid Grid.Row="0"
-                    x:Name="dataGridCC"
-                    Margin="5,10"
-                    CanUserAddRows="False" 
-                    FrozenColumnCount="4"
-                    AutoGenerateColumns="False"
-                    HeadersVisibility="All"
-                    VerticalScrollBarVisibility="Auto"
-                    IsReadOnly="True"
-                    md:DataGridAssist.CellPadding="10 5"
-                    md:DataGridAssist.ColumnHeaderPadding="10 10"
-                    HorizontalAlignment="Stretch"
+                  x:Name="dataGridCC"
+                  HorizontalAlignment="Left"
+                  Margin="5,10"
+                  CanUserAddRows="False" 
+                  AutoGenerateColumns="False"
+                  HeadersVisibility="All"
+                  VerticalScrollBarVisibility="Auto"
+                  IsReadOnly="True"
                   ItemsSource="{Binding tableData}">
+                  <!--md:DataGridAssist.CellPadding="10 5"
+                  md:DataGridAssist.ColumnHeaderPadding="10 10"-->
+
 
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Binding="{Binding PeriodStr}"
                     Header="Период"
-                    Width="1*">
+                    HeaderStyle="{StaticResource mdDataGridTextColumnHeaderStyleLeft}">
                 </DataGridTextColumn>
 
                 <DataGridTextColumn
                     Binding="{Binding IdCC}"
                     Header="ЦЗ"
-                    Width="0.7*">
+                    HeaderStyle="{StaticResource mdDataGridTextColumnHeaderStyleLeft}">
                 </DataGridTextColumn>
 
                 <DataGridTemplateColumn
                     Header="Энергоресурс"
-                    Width="2*">
+                    HeaderStyle="{StaticResource mdDataGridTextColumnHeaderStyleLeft}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -73,7 +112,7 @@
 
                 <DataGridTemplateColumn
                     Header="Разм."
-                    Width="1*">
+                    HeaderStyle="{StaticResource mdDataGridTextColumnHeaderStyleLeft}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -89,7 +128,7 @@
                 
                 <DataGridTemplateColumn
                     Header="Факт"
-                    Width="1*">
+                    HeaderStyle="{StaticResource mdDataGridTextColumnHeaderStyleRight}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -107,7 +146,7 @@
 
                 <DataGridTemplateColumn
                     Header="План"
-                    Width="1*">
+                    HeaderStyle="{StaticResource mdDataGridTextColumnHeaderStyleRight}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -127,7 +166,7 @@
 
                 <DataGridTemplateColumn
                     Header="Откл."
-                    Width="1*">
+                    HeaderStyle="{StaticResource mdDataGridTextColumnHeaderStyleRight}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -148,7 +187,7 @@
                 <DataGridTextColumn
                     Binding="{Binding DiffProc, StringFormat=N1}"
                     Header="Откл., %"
-                    Width="1*"
+                    HeaderStyle="{StaticResource mdDataGridTextColumnHeaderStyleRight}"
                     EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
